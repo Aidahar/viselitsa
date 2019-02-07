@@ -9,7 +9,7 @@ class Game
 
   def get_letters(slovo)
     if slovo == nil || slovo == ""
-      abort "Загадано пустое слово, нечего отгадывать. Закрываемся"
+      raise "Загадано пустое слово, нечего отгадывать. Закрываемся"
     end
     return Unicode::downcase(slovo).encode('UTF-8').split("")
   end
