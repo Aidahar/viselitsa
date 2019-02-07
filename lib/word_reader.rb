@@ -9,7 +9,7 @@ class WordReader
       lines = file.readlines
       file.close
       return lines.sample.downcase.chomp
-    rescue
+    rescue LoadError
       @status_image << "\n [ изображение не найдено ] \n"
     end
   end
