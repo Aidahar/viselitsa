@@ -6,15 +6,13 @@ class ResultPrinter
     counter = 0
     while counter <= 7
       file_name = current_path + "/image/#{counter}.txt"
-
-      begin File.exist?(file_name)
-        file = File.new(file_name, "r:UTF-8")
-        @status_image << file.read
-        file.close
-      rescue
-        @status_image << "\n [ изображение не найдено ] \n"
-      end
-
+        if File.exist?(file_name)
+          file = File.new(file_name, "r:UTF-8")
+          @status_image << file.read
+          file.close
+        else
+          @status_image << "\n [ изображение не найдено ] \n"
+        end
       counter += 1
     end
   end
