@@ -3,9 +3,9 @@ class WordReader
     return ARGV[0]
   end
 
-  def read_from_file(file_name)
-    begin File.exist?(file_name)
-      file = File.new(file_name, "r:UTF-8")
+  def read_from_file(words_file_name)
+    begin File.exist?(words_file_name)
+      file = File.new(words_file_name, "r:UTF-8")
       lines = file.readlines
       file.close
       return lines.sample.downcase.chomp
