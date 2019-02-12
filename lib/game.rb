@@ -39,8 +39,6 @@ class Game
       (bukva == "и" && @letters.include?("й")) ||
       (bukva == "й" && @letters.include?("и"))
 
-      @good_letters << bukva
-
       # берем букву и если эта букву: е, ё, и, й
       # добавляем в массив хороших букв её "сестру"
       case bukva
@@ -49,7 +47,7 @@ class Game
       when "и" then @good_letters << "й"
       when "й" then @good_letters << "и"
       end
-
+      @good_letters << bukva
       # если массив хороших букв равен массиву букв из загаданного слова меняем статус на 1
       if @good_letters.uniq.sort == @letters.uniq.sort ||
         (@letters - good_letters).empty?
@@ -60,6 +58,12 @@ class Game
       @bad_letters << bukva
       @errors += 1
 
+      case bukva
+      when "е" then @bad_letters << "ё"
+      when "ё" then @bad_letters << "е"
+      when "и" then @bad_letters << "й"
+      when "й" then @bad_letters << "и"
+      end
       # если ошибок станет больше 7 то статус игры равен -1
       if @errors >= 7
         @status = -1
