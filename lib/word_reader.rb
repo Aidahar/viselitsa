@@ -1,7 +1,7 @@
 class WordReader
   #метод обрабатывает ввод из командной строки
   def read_from_args
-    return ARGV[0]
+    ARGV[0]
   end
 
   #метод получает на вход путь к файлу со словами, проверяет есть ли там файлы, возвращает одно из слов файла со
@@ -10,13 +10,9 @@ class WordReader
   def read_from_file(words_file_name)
     #если файл существует, создаем переменную и передаем в нее файл.
     if File.exist?(words_file_name)
-      file = File.new(words_file_name, "r:UTF-8")
-    #создаем массив строк из прочтенного файла
-      lines = file.readlines
-    #закрываем файл
-      file.close
+      lines = IO.readlines(words_file_name, encoding: 'UTF-8')
     #возвращаем случайный элемент из массива слов
-      return lines.sample.downcase.chomp
+      lines.sample.downcase.chomp
       #если при чтении файла возникла ошибка прекращаем программу и выводим сообщение,
       #что Файл не найден
     else
