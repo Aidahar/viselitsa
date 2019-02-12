@@ -9,7 +9,7 @@ class WordReader
   # этот код чтобы не набирать вручную, я скопировал из принтера результатов и забыл поправить строку ошибки
   def read_from_file(words_file_name)
     #если файл существует, создаем переменную и передаем в нее файл.
-    begin File.exist?(words_file_name)
+    if File.exist?(words_file_name)
       file = File.new(words_file_name, "r:UTF-8")
     #создаем массив строк из прочтенного файла
       lines = file.readlines
@@ -17,9 +17,10 @@ class WordReader
       file.close
     #возвращаем случайный элемент из массива слов
       return lines.sample.downcase.chomp
-      #если при чтении файла возникла ошибка выводим сообщение, что Файл не найден
-    rescue LoadError
-      return "\n [ Файл со словами не найден ] \n"
+      #если при чтении файла возникла ошибка прекращаем программу и выводим сообщение,
+      #что Файл не найден
+    else
+      raise "\n [ Файл со словами не найден ] \n"
     end
   end
 end
