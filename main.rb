@@ -1,7 +1,7 @@
 require_relative "lib/game"
 require_relative "lib/result_printer"
 require_relative "lib/word_reader"
-require 'unicode'
+require 'unicode_utils'
 
 current_path = __dir__
 
