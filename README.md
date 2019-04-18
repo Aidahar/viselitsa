@@ -19,4 +19,4 @@ gem bundler update
 ```
 bundle exec ruby main.rb
 ```
-"Список слов для игры может быть отредактирован в файле data/words.txt"
+Список слов для игры может быть отредактирован в файле data/words.txt
